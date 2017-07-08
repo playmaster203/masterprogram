@@ -1,0 +1,36 @@
+
+@echo off
+cls
+set /p NAME= What is your registry?:
+goto %NAME%
+
+
+
+
+:2
+cls
+pause
+set /p PASSWORD1=What is your password?:
+
+for /f "Delims=" %%a in (RyanPass.txt) do (
+
+set TEXT=%%a
+
+)
+
+if %PASSWORD1%=%TEXT% goto correct1
+echo You are wrong!!!
+pause
+goto MENU
+
+
+
+
+:correct1
+echo You are right!!!
+pause
+goto MENU
+
+
+
+

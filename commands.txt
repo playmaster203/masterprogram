@@ -1,0 +1,1 @@
+/summon Skeleton ~ ~1 ~ {Equipment:[{id:276, Count:1, Damage:0,tag:{ench:[{id:16,lvl:20}, {id:34,lvl:10000},{id:20,lvl:20}]}}, {id:309}, {id:308}, {id:307}, {id:306}],CustomName: Invasion!}
