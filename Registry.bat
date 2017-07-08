@@ -5,6 +5,7 @@ cls
 title Login Terminal
 echo -Verify1 (Evan Login)
 echo -Verify2 (Ryan Login)
+echo -CreateNew (Creates Temporary User)
 echo.
 set /p PROGRAM= What do you want to do?
 goto %PROGRAM%
