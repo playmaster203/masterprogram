@@ -1,11 +1,10 @@
+color 02
 @echo off
 :MENU
 cls
-echo -create1 (create Evan Pass)
-echo -create2 (create Ryan Pass)
-echo -Verify1 (check Evan Pass)
-echo -Verify2 (check Ryan Pass)
-echo -Login (Access account)
+title Login Terminal
+echo -Verify1 (Evan Login)
+echo -Verify2 (Ryan Login)
 echo.
 set /p PROGRAM= What do you want to do?
 goto %PROGRAM%
@@ -15,15 +14,22 @@ goto %PROGRAM%
 
 :create1
 cls
-set /p PASSWORD= What do you want your passowrd to be?:
+title Pick A Password
+set /p PASSWORD= What do you want your password to be?:
 echo %PASSWORD% > EvanPass.txt
-pause
-goto MENU
-
+cls
+cls
+cls
+cls
+echo Go To -MENU-
+echo Go To -Loggedin1-
+set /p AFTERLOGIN1= Go To:
+goto %AFTERLOGIN1%
 
 
 :Verify1
 cls
+title Login
 set /p PASSWORD1=What is your password?:
 
 for /f "Delims=" %%a in (EvanPass.txt) do (
@@ -41,31 +47,33 @@ goto MENU
 
 
 :correct1
-echo Successfully Logged In.
 cls
+echo Successfully Logged In.
 pause
 goto Loggedin1
 
 :Loggedin1
 cls
+title Evan's Terminal
 echo To get to a category, enter a catagory name.
-echo -Options-
-echo -Shortcuts-
+echo -Options1-
+echo -Shortcut1-
 set /p OPTION= Go To:
 goto %OPTION%
 pause
 
-:OPTIONS
+:Options1
 cls
+Title Evan's Terminal- Options
 echo To get to a category, enter a catagory name.
-echo -ChangePassword-
+echo -ChangePassword1-
 echo -Exit-
-echo -Back-
+echo -Back1-
 set /p OPTIONS= Go To:
 goto %OPTIONS%
 
 
-:ChangePassword
+:ChangePassword1
 cls
 goto Create1
 
@@ -73,25 +81,57 @@ goto Create1
 cls
 goto MENU
 
-:Back
+:Back1
 cls
 goto Loggedin1
+
+
+
+:Shortcut1
+cls
+title Evan's Terminal-Shortcuts
+echo -Google1-
+echo -Youtube1-
+echo -Back1-
+set /p OPTION2= Go To:
+goto %OPTION2%
+
+:Google1
+start www.youtube.com
+pause
+goto Shortcut1
+
+:Youtube1
+start www.youtube.com
+pause
+goto Shortcut1
+
+
+
+
+
+
 
 
 
 
 :create2
 cls
-set /p PASSWORD= What do you want your passowrd to be?:
-echo %PASSWORD% > RyanPass.txt
-pause
-goto MENU
-
+title Create Password
+set /p PASSWORD3= What do you want your password to be?:
+echo %PASSWORD3% > RyanPass.txt
+cls
+echo Password created as %PASSWORD3%
+echo Go To -MENU-
+echo Go To -Loggedin1-
+set /p AFTERLOGIN1= Go To:
+goto %AFTERLOGIN1%
 
 
 :Verify2
 cls
-set /p PASSWORD1=What is your password?:
+title Ryan's Login
+set /p PASSWORD2=What is your password?:
 
 for /f "Delims=" %%a in (RyanPass.txt) do (
 
@@ -99,7 +139,7 @@ set TEXT=%%a
 
 )
 
-if %PASSWORD1%==%TEXT% goto correct2
+if %PASSWORD2%==%TEXT% goto correct2
 echo You are wrong!!!
 pause
 goto MENU
@@ -108,28 +148,63 @@ goto MENU
 
 
 :correct2
+cls
+title Ryan's Login
 echo Successfully Logged In.
 pause
+goto Loggedin2
+
 :Loggedin2
 cls
+title Ryan's Terminal
 echo To get to a category, enter a catagory name.
-echo -Exit to Menu-
-echo -Change Password-
-echo -Youtube-
+echo -Options2-
+echo -Shortcut2-
+set /p OPTION2= Go To:
+goto %OPTION2%
+pause
+
+:Options2
+cls
+title Ryan's Terminal- Options
+echo To get to a category, enter a catagory name.
+echo -ChangePassword2-
+echo -Exit-
+echo -Back2-
+set /p OPTIONS= Go To:
+goto %OPTIONS%
+
+
+:ChangePassword2
+cls
+goto Create2
+
+:Exit
+cls
+goto MENU
+
+:Back2
+cls
+goto Loggedin2
 
 
 
+:Shortcut2
+cls
+title Ryan's Terminal- Shortcut Menu
+echo -Google2-
+echo -Youtube2-
+echo -Back2-
+set /p OPTION2= Go To:
+goto %OPTION2%
+
+:Google2
+start www.google.com
+pause
+goto Loggedin2
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+:Youtube2
+start www.youtube.com
+pause
+goto Loggedin2
