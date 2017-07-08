@@ -1,11 +1,11 @@
 @echo off
-setlocal EnableExtensions EnableDelayedExpansion
 :MENU
 cls
 echo -create1 (create Evan Pass)
 echo -create2 (create Ryan Pass)
 echo -Verify1 (check Evan Pass)
 echo -Verify2 (check Ryan Pass)
+echo -Login (Access account)
 echo.
 set /p PROGRAM= What do you want to do?
 goto %PROGRAM%
@@ -15,8 +15,8 @@ goto %PROGRAM%
 
 :create1
 cls
-set /p PASSWORD1= What do you want your passoword to be?:
-echo %PASSWORD1% > EvanPass.txt
+set /p PASSWORD= What do you want your passowrd to be?:
+echo %PASSWORD% > EvanPass.txt
 pause
 goto MENU
 
@@ -24,7 +24,7 @@ goto MENU
 
 :Verify1
 cls
-set /p PASSWORD1= What is your password?:
+set /p PASSWORD1=What is your password?:
 
 for /f "Delims=" %%a in (EvanPass.txt) do (
 
@@ -41,55 +41,48 @@ goto MENU
 
 
 :correct1
+echo Successfully Logged In.
 cls
-echo Logged In.
 pause
-:Login1
-echo -To access option, enter option name-
+goto Loggedin1
+
+:Loggedin1
+cls
+echo To get to a category, enter a catagory name.
 echo -Options-
-echo -Shortcut-
-set /p OPTION=-->
+echo -Shortcuts-
+set /p OPTION= Go To:
 goto %OPTION%
+pause
+
+:OPTIONS
+cls
+echo To get to a category, enter a catagory name.
+echo -ChangePassword-
+echo -Exit-
+echo -Back-
+set /p OPTIONS= Go To:
+goto %OPTIONS%
 
 
-
-
-
-
-:Options
-echo -exit-
-echo -change password-
-set /p OPTIONS=--->
-goto %OPTIONS*
+:ChangePassword
+cls
+goto Create1
 
 :Exit
+cls
 goto MENU
 
-
-
-:Change_Password
-
-goto create1
-
-
-
-
-
-
-
-
-
-
-
-
-
+:Back
+cls
+goto Loggedin1
 
 
 
 
 :create2
 cls
-set /p PASSWORD= What do you want your password to be?:
+set /p PASSWORD= What do you want your passowrd to be?:
 echo %PASSWORD% > RyanPass.txt
 pause
 goto MENU
@@ -98,7 +91,7 @@ goto MENU
 
 :Verify2
 cls
-set /p PASSWORD2= What is your password?:
+set /p PASSWORD1=What is your password?:
 
 for /f "Delims=" %%a in (RyanPass.txt) do (
 
@@ -106,7 +99,7 @@ set TEXT=%%a
 
 )
 
-if %PASSWORD2%==%TEXT% goto correct2
+if %PASSWORD1%==%TEXT% goto correct2
 echo You are wrong!!!
 pause
 goto MENU
@@ -114,12 +107,17 @@ goto MENU
 
 
 
-
 :correct2
-cls
-echo U DID GUD MATE
+echo Successfully Logged In.
 pause
-goto MENU
+:Loggedin2
+cls
+echo To get to a category, enter a catagory name.
+echo -Exit to Menu-
+echo -Change Password-
+echo -Youtube-
+
+
 
 
 

@@ -26,13 +26,13 @@ goto MENU
 cls
 set /p PASSWORD1=What is your password?:
 
-for /f "Delims=" %%a in (test.txt) do (
+for /f "Delims=" %%a in (EvanPass.txt) do (
 
 set TEXT=%%a
 
 )
 
-if %PASSWORD1%=%TEXT% goto correct1
+if %PASSWORD1%==%TEXT% goto correct1
 echo You are wrong!!!
 pause
 goto MENU
@@ -42,23 +42,34 @@ goto MENU
 
 :correct1
 echo Successfully Logged In.
+cls
 pause
 :Loggedin1
 cls
 echo To get to a category, enter a catagory name.
-echo -Exit to Menu-
-echo -Change Password-
-echo -Youtube-
+echo -Options-
+echo -Shortcuts-
+set /p OPTION=----->
+goto %OPTION%
+pause
+
+:OPTIONS
+echo To get to a category, enter a catagory name.
+echo -ChangePassword-
+echo -Exit-
+echo -Back-
+set /p OPTIONS=--->
+goto OPTIONS
 
 
+:ChangePassword
+goto Create1
 
+:Exit
+goto MENU
 
-
-
-
-
-
-
+:Back
+goto LoggedIn1
 
 
 
@@ -76,13 +87,13 @@ goto MENU
 cls
 set /p PASSWORD1=What is your password?:
 
-for /f "Delims=" %%a in (test.txt) do (
+for /f "Delims=" %%a in (RyanPass.txt) do (
 
 set TEXT=%%a
 
 )
 
-if %PASSWORD1%=%TEXT% goto correct2
+if %PASSWORD1%==%TEXT% goto correct2
 echo You are wrong!!!
 pause
 goto MENU
